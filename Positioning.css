@@ -1,0 +1,493 @@
+        @font-face {
+    font-family: "myFont";
+    src: url("HalloweenSlimePersonalUse-4B80D.otf");
+  }
+  html{
+    background-color: rgb(29, 29, 33);
+    font-family: sans-serif;
+  }
+
+  /* scenes (the good stuff) */
+
+  .scenes {
+    position: relative;
+    aspect-ratio: 2.5 / 1;
+    outline: 2px solid #ccc;
+  }
+
+  .scene-1, .scene-2 {
+    position: absolute;
+    inset: 0;
+    background-size: 100% 100%; /* Added this line */
+  }
+
+  .scene-1 {
+    background-image: url(far.jpg);
+  }
+
+  .scene-2 {
+    background-image: url(last2.png);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 47.5%,
+      #fff 52.5%
+    );
+    -webkit-mask-size: 210%;
+    -webkit-mask-position: left;
+  }
+
+  .scenes:is(:hover, :focus) .scene-2 {
+    -webkit-mask-position: right;
+    transition: -webkit-mask-position 2s linear;
+  }
+
+  .scene-title {
+    position: absolute;
+    max-width: 45%;
+    margin: min(40px, 4vw);
+    font-size: 1.25em;
+  }
+
+  .scene-1 .scene-title {
+    top: 0;
+    left: 0;
+    color: #000;
+    text-align: left;
+  }
+
+  .scene-2 .scene-title {
+    top: 0;
+    right: 0;
+    color: #fff;
+    text-align: right;
+  }
+
+  /* everything else */
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    display: grid;
+    gap: 30px;
+    width: 100%;
+    padding: 1px;
+  }
+
+  .intro {
+    text-align: center;
+  }
+
+  .heading {
+    margin: 0;
+    font-size: 2.5em;
+  }
+
+  .heading::before, .heading::after {
+    content: ' — ';
+  }
+
+  .nudge {
+    margin: 0;
+    color: #888;
+    font-size: 1.25em;
+  }
+
+  .visualizer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .visualizer-frame {
+    position: relative;
+    width: min(150px, 25vw);
+    aspect-ratio: 2.4 / 1;
+    outline: 2px solid #ccc;
+  }
+
+  .visualizer-mask {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 210%;
+    background-color: #333;
+    background-image:
+      linear-gradient(to right, transparent 47.5%, #fff 52.5%),
+      linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%),
+      linear-gradient(45deg, #444 25%, transparent 25%, transparent 75%, #444 75%);
+    background-size:
+      auto auto,
+      16px 16px,
+      16px 16px;
+    background-position:
+      0 0,
+      0 0,
+      8px 8px;
+    box-shadow: inset 0 0 0 2px #111;
+  }
+
+  .scenes:is(:hover, :focus) + .visualizer .visualizer-mask {
+    transform: translateX(calc((100% - 210%) / 2.1));
+    transition
+  }
+/* Scenes end */
+
+  nav{
+    padding: 6px;
+    background-color: #489d0b;
+    display: flex;
+    flex-direction: row;
+  }
+  .logo, .joystick, .beta{
+  width: 45px;
+  height: 45px;
+  }
+  .logo{
+      border-radius: 5px;
+    margin-left: 5px;
+  }
+  .title{
+    color: white;
+      font-family: "myFont", "Bitstream Vera Serif", serif;
+    padding-left: 15px;
+    display: grid;
+  }
+  span.play{
+      color: rgb(29, 29, 33);
+    padding-left: 73px;
+  }
+  .joystick{
+  margin-left: 35px;
+  }
+  .favorites{
+    position: absolute;
+    color: white;
+        font-family: "myFont", "Bitstream Vera Serif", serif;
+        font-size: 20px;
+        right: 75px;
+        top: 25px;
+}
+
+  /*search*/
+  .search-box{
+    margin-top: 3px;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+  }
+  .input-search{
+    height: 40px;
+    width: 400px;
+    border-style: none;
+    padding: 3px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: rgb(29, 29, 33);
+    padding-right: 40px;
+    color:#fff;
+    margin-bottom: 5px;
+    margin-left: 25px;
+  }
+  .input-search::placeholder{
+    color:rgba(255,255,255,.5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+  }
+  .btn-search{
+    width: 60px;
+    height: 40px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color:#ffffff ;
+    background-color:transparent;
+    pointer-events: painted;
+  }
+  .btn-search:focus ~ .input-search{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid rgba(255,255,255,.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  }
+  .input-search:focus{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid rgba(255,255,255,.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+    }
+    /* end */
+
+    #myButton{
+    color: white;
+    font-size: 19px;
+    font-family: "myFont", "Bitstream Vera Serif", serif;
+    border: none;
+    background-color: #489d0b;
+    padding-right: 20px;
+  }
+
+  .beta{
+    position: absolute;
+    right: 220px;
+    width: 75px;
+    height: 55px;
+    top: 10px;
+  }
+  .gallery{
+      display: flex;
+        font-family: "myFont", "Bitstream Vera Serif", serif;
+      background-color: rgb(66, 66, 71);
+   margin-left: 225px;
+   margin-right: 225px;
+  }
+  .home{
+    width: 30px;
+    height: auto;
+  }
+  .homeText{
+    font-size: 20px;
+    padding-top: 2px;
+  }
+
+  .listGames {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+  }
+
+  .gameItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+  }
+
+  .details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 65px;
+  }
+  .farCry, .red, .last, .resident, .forza, .resident{
+      width: 150px;
+    height: 208.25px;
+  }
+  .neshtotam{
+      font-family: "myFont", "Bitstream Vera Serif", serif;
+    background-color: rgb(37, 37, 41);
+    margin-left: 225px;
+      margin-right: 225px;
+  }
+  .shop{
+    font-size: 20px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
+.price1 {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.button1 {
+  margin-top: 0;
+  font-family: "myFont", "Bitstream Vera Serif", serif;
+    background-color: #489d0b; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+        padding: 5px 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.more{
+  font-size: 25px;
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+.info{
+    background-color: #489d0b;
+  margin-top: 135px;
+}
+.main {
+  display: flex;
+  padding-left: 25px;
+  padding-top: 15px;
+  gap: 35px;
+  padding-bottom: 15px;
+}
+span.com{
+  font-family: "myFont", "Bitstream Vera Serif", serif;
+  font-size: 25px;
+}
+
+.facebook, .youtube{
+    width: 35px; /* Set the width to 50% of the parent container */
+  height: 35px;
+}
+
+.instagram{
+      width: 45px; /* Set the width to 50% of the parent container */
+  height: 35px;
+}
+
+.forList{
+       font-family: "myFont", "Bitstream Vera Serif", serif;
+  background-color: #489d0b;
+     padding-top: 25px;
+   padding-bottom: 15px;
+}
+.forList ul{
+  margin-top: 5px;
+      list-style: none;
+}
+.for{
+  padding-bottom: 15px;
+       font-size: 25px;
+}
+
+.contactsList ul{
+      list-style: none;
+}
+
+.contactsList{
+         font-family: "myFont", "Bitstream Vera Serif", serif;
+  position: absolute;
+  top: 1605px;
+  left: 400px;
+}
+
+.contacts{
+  padding-bottom: 15px;
+       font-size: 25px;
+}
+
+.relationsList ul{
+      list-style: none;
+}
+
+.relationsList{
+         font-family: "myFont", "Bitstream Vera Serif", serif;
+  position: absolute;
+  top: 1605px;
+  left: 800px;
+}
+
+.relations{
+  padding-bottom: 15px;
+       font-size: 25px;
+}
+span.line{
+  position: absolute;
+  top: 1585px;
+  left: 35px;
+    border-bottom: 4px solid rgb(37, 37, 41);
+    width: 1315px;
+}
+
+
+ #myDropdown {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+#myDropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  width: 150px;
+}
+
+#myDropdown ul li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#myDropdown ul li:hover {
+  background-color: #e5e5e5;
+}
+.nzVeche{
+  position: absolute;
+  top: 25px;
+  left: 355px;
+}
+
+#myButton{
+  color: white;
+  font-size: 19px;
+  font-family: "myFont", "Bitstream Vera Serif", serif;
+  border: none;
+  background-color: #489d0b;
+}
+.farCry2{
+width: 65px;
+height: auto;
+}
+.red2{
+width: 65px;
+height: auto;
+}
+.last2{
+width: 65px;
+height: auto;
+}
+.resident2{
+width: 65px;
+height: auto;
+}
+.forza2{
+width: 65px;
+height: auto;
+}
+.call2{
+width: 65px;
+height: auto;
+}
+#myDropdown ul.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  grid-gap: 10px; /* Adjust the gap between images */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  width: 340px; /* Adjust the width of the grid container */
+  background-color: rgb(66, 66, 71);
+  padding-top: 15px;
+  margin-top: 30px;
+}
+
+#myDropdown ul.grid-container li {
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: rgb(66, 66, 71);
+}
+
+#myDropdown ul.grid-container li:hover {
+  background-color: #e5e5e5;
+}
+span.text{
+           font-family: "myFont", "Bitstream Vera Serif", serif;
+}
